@@ -97,6 +97,199 @@
   }
 }
 
+/* 3D Portfolio Styles */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+  perspective: 1000px;
+}
+
+.tech-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.tech-card:hover::before {
+  transform: translateX(100%);
+}
+
+.tech-card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.tech-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  position: relative;
+}
+
+.tech-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover .tech-icon img {
+  transform: scale(1.2) rotateY(15deg);
+}
+
+.tech-name {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border-radius: 25px;
+  padding: 40px 30px;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+  transform: rotate(45deg) translate(50%, 50%);
+}
+
+.stat-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #4facfe;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Particles Background */
+.particles-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particles-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: particlesFloat 20s linear infinite;
+}
+
+@keyframes particlesFloat {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-100px) translateX(50px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+  }
+  
+  .tech-card {
+    padding: 20px 15px;
+  }
+  
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+  }
+}
+
+/* Animation delays for staggered effect */
+.tech-card:nth-child(1) { animation-delay: 0.1s; }
+.tech-card:nth-child(2) { animation-delay: 0.2s; }
+.tech-card:nth-child(3) { animation-delay: 0.3s; }
+.tech-card:nth-child(4) { animation-delay: 0.4s; }
+.tech-card:nth-child(5) { animation-delay: 0.5s; }
+.tech-card:nth-child(6) { animation-delay: 0.6s; }
+.tech-card:nth-child(7) { animation-delay: 0.7s; }
+
 
 /* project image zoom effect */
 
@@ -301,6 +494,136 @@
 				</div>
 			</div>
 		</div>
+    </section>
+
+    <!-- 3D Portfolio Section -->
+    <section class="ftco-section" id="portfolio-section" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h1 class="big big-2" style="color: rgba(255,255,255,0.1);">Portfolio</h1>
+                    <h2 class="mb-4" style="color: white;">3D Skills Portfolio</h2>
+                    <p style="color: rgba(255,255,255,0.8);">Interactive showcase of my technical expertise</p>
+                </div>
+            </div>
+
+            <!-- Languages Section -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4" style="color: white; font-size: 2.5rem; font-weight: 300; letter-spacing: 3px;">LANGUAGES</h3>
+                    <div class="tech-grid languages-grid">
+                        <div class="tech-card" data-tech="C" data-count="95">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+                            </div>
+                            <div class="tech-name">C</div>
+                        </div>
+                        <div class="tech-card" data-tech="C++" data-count="90">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+                            </div>
+                            <div class="tech-name">C++</div>
+                        </div>
+                        <div class="tech-card" data-tech="Python" data-count="90">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+                            </div>
+                            <div class="tech-name">Python</div>
+                        </div>
+                        <div class="tech-card" data-tech="Java" data-count="75">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+                            </div>
+                            <div class="tech-name">Java</div>
+                        </div>
+                        <div class="tech-card" data-tech="JavaScript" data-count="85">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+                            </div>
+                            <div class="tech-name">JavaScript</div>
+                        </div>
+                        <div class="tech-card" data-tech="HTML5" data-count="95">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+                            </div>
+                            <div class="tech-name">HTML5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technologies Section -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4" style="color: white; font-size: 2.5rem; font-weight: 300; letter-spacing: 3px;">TECHNOLOGIES</h3>
+                    <div class="tech-grid technologies-grid">
+                        <div class="tech-card" data-tech="MongoDB" data-count="80">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
+                            </div>
+                            <div class="tech-name">MongoDB</div>
+                        </div>
+                        <div class="tech-card" data-tech="Express" data-count="85">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" style="filter: invert(1);" />
+                            </div>
+                            <div class="tech-name">Express</div>
+                        </div>
+                        <div class="tech-card" data-tech="React" data-count="88">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+                            </div>
+                            <div class="tech-name">React</div>
+                        </div>
+                        <div class="tech-card" data-tech="Node.js" data-count="85">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+                            </div>
+                            <div class="tech-name">Node.js</div>
+                        </div>
+                        <div class="tech-card" data-tech="MySQL" data-count="80">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                            </div>
+                            <div class="tech-name">MySQL</div>
+                        </div>
+                        <div class="tech-card" data-tech="Git" data-count="90">
+                            <div class="tech-icon">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                            </div>
+                            <div class="tech-name">Git</div>
+                        </div>
+                        <div class="tech-card" data-tech="Vercel" data-count="75">
+                            <div class="tech-icon">
+                                <svg viewBox="0 0 24 24" fill="white" style="width: 40px; height: 40px;">
+                                    <path d="M12 2L24 22H0L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="tech-name">Vercel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-number" id="leetcode-count">117</div>
+                        <div class="stat-label">Total Leetcode Problems Solved 🏆</div>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-number" id="github-count">26</div>
+                        <div class="stat-label">Total Projects on Github 💻</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating particles background -->
+        <div class="particles-bg"></div>
     </section>
 
 
@@ -541,6 +864,114 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
+  
+  <!-- 3D Portfolio JavaScript -->
+  <script>
+    // 3D Portfolio Interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tech cards animation on scroll
+      const techCards = document.querySelectorAll('.tech-card');
+      const statCards = document.querySelectorAll('.stat-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      // Initialize cards with hidden state
+      [...techCards, ...statCards].forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.6s ease';
+        observer.observe(card);
+      });
+      
+      // Mouse move effect for tech cards
+      techCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+      });
+      
+      // Animated counter for statistics
+      function animateCounter(element, target, duration = 2000) {
+        let start = 0;
+        const increment = target / (duration / 16);
+        
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(start);
+          }
+        }, 16);
+      }
+      
+      // Trigger counter animation when stat cards are visible
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const numberElement = entry.target.querySelector('.stat-number');
+            const targetNumber = parseInt(numberElement.textContent);
+            numberElement.textContent = '0';
+            setTimeout(() => {
+              animateCounter(numberElement, targetNumber);
+            }, 500);
+            statObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      statCards.forEach(card => {
+        statObserver.observe(card);
+      });
+      
+      // Add click effects to tech cards
+      techCards.forEach(card => {
+        card.addEventListener('click', () => {
+          card.style.transform = 'perspective(1000px) scale(0.95)';
+          setTimeout(() => {
+            card.style.transform = 'perspective(1000px) scale(1)';
+          }, 150);
+        });
+      });
+      
+      // Parallax effect for particles
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.particles-bg');
+        if (parallax) {
+          const speed = scrolled * 0.5;
+          parallax.style.transform = `translateY(${speed}px)`;
+        }
+      });
+    });
+  </script>
     
   </body>
 </html>
